@@ -46,6 +46,14 @@ public class UserDetailsActivity extends BaseActivity implements HasComponent<Us
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (outState != null) {
+            outState.putInt(INSTANCE_STATE_PARAM_USER_ID, this.userId);
+        }
+        super.onSaveInstanceState(outState);
+    }
+
     private void initializeInjector() {
         userComponent = DaggerUserComponent.builder()
                 .applicationComponent(getApplicationComponent())
